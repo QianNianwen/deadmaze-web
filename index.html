@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>首页</title>
+        <link rel="stylesheet" href="/static/layui/css/layui.css">
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+        <script src="/static/jQuery/jquery.min.js"></script>
+        <script src="/static/jQuery/jquery.cookie.js"></script>
+        <script src="/static/layui/layui.all.js"></script>
+        <script src="/static/js/base.js?v=3"></script>
+    </head>
+    <body>
+        <div id="nav-div">
+            <ul id="nav-view" class="layui-nav">
+                <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+                <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+                <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+                <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+                <li id="menu-4" class="layui-nav-item">
+                    <a href="#">其它</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/html/element/index.html">元素</a></dd>
+                        <dd><a href="/html/quality/index.html">品质</a></dd>
+                    </dl>
+                </li>
+                <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+            </ul>
+        </div>
+        <div id="main-div" class="layui-container">
+            <div class="layui-row">
+                <div id="name" class="layui-col-md12">
+                    <blockquote class="layui-elem-quote">本站资料参考：<a target="_blank" href="/static/https://static.fandom.com/">static.fandom.com</a></blockquote>
+                    <blockquote class="layui-elem-quote">QQ群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=yN3Jn2gs">【Dead Maze中文交流群】</a>（点击加入）</blockquote>
+                    <blockquote class="layui-elem-quote">部分内容未与游戏官方中文核对，可能有翻译错误。如果发现错误请加群反馈。</blockquote>
+                    <blockquote class="layui-elem-quote">网站主要是参考wiki资料可能部分图片或资料与现版本有差异。如果发现问题请加群反馈。</blockquote>
+                    <ul class="layui-timeline">
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.02.14</h3>
+                                <p>
+                                    新增物品-食物和饮料<br>
+                                    新增物品-杂项<br>
+                                    新增物品-任务物品<br>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.02.10</h3>
+                                <p>
+                                    新增物品-武器
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.01.29</h3>
+                                <p>
+                                    新增狗任务追踪器
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.01.28</h3>
+                                <p>
+                                    新增资源<br>
+                                    新增资源追踪器
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.01.27</h3>
+                                <p>
+                                    优化SP追踪器
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.01.26</h3>
+                                <p>
+                                    重构完成，移除NPC、密道、图纸、物品<br>
+                                    新增SP追踪器
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2021.01.25</h3>
+                                <p>
+                                    开始重构网站
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.23</h3>
+                                <p>
+                                    新增元素<br/>
+                                    新增品质<br/>
+                                    新增物品-武器（部分）
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.19</h3>
+                                <p>
+                                    新增99号公路,南法伦6B出口（地图，密道，建筑图纸）<br/>
+                                    新增蓝色梅萨（地图，密道，建筑图纸）<br/>
+                                    新增冒险（地图，流程）<br/>
+                                    新增其它地图（地图）<br/>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.18</h3>
+                                <p>
+                                    新增日落商城（地图，密道，建筑图纸，NPC）<br/>
+                                    新增沃克河（地图，密道，建筑图纸，NPC）<br/>
+                                    新增亚利桑那州侏罗纪博物馆（地图，密道，建筑图纸，NPC）
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.17</h3>
+                                <p>
+                                    新增圣罗莎市中心（地图，密道，建筑图纸，NPC）<br/>
+                                    新增马宗学院（地图，密道，NPC）
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.16</h3>
+                                <p>
+                                    新增幸存者营地（地图，NPC）<br/>
+                                    新增萨克拉门托郊区（地图，密道，建筑图纸，NPC）<br/>
+                                    新增博德加湾（地图，密道，NPC）
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.13</h3>
+                                <p>
+                                    补充首页（网站时间线）<br/>
+                                    补充莱克维尤巷，18号（地图、大部分NPC）
+                                </p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020.11.12</h3>
+                                <p>
+                                    开始建设<br/>
+                                    新增首页<br/>
+                                    新增地图(世界地图)<br/>
+                                    新增莱克维尤巷，18号（地图）
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                selectNav(1);
+                layui.element.render();
+            });
+        </script>
+
+    </body>
+</html>

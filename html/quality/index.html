@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>品质</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+    <script src="/static/jQuery/jquery.min.js"></script>
+    <script src="/static/jQuery/jquery.cookie.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+    <script src="/static/js/base.js?v=3"></script>
+</head>
+<body>
+<div id="nav-div">
+    <ul id="nav-view" class="layui-nav">
+        <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+        <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+        <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+        <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+        <li id="menu-4" class="layui-nav-item">
+            <a href="#">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/element/index.html">元素</a></dd>
+                <dd><a href="/html/quality/index.html">品质</a></dd>
+            </dl>
+        </li>
+        <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+    </ul>
+</div>
+<div id="main-div" class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">品质</blockquote>
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                <p>物品的质量会影响其词条和持续时间。如果一个物品有技能，较高的质量也会增加它最初的使用次数。</p>
+                <p>传奇物品和其它物品不同，它们的名字实际上是以橙色出现的。传奇物品不能分解或制造。</p>
+            </blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>一般/过期</th>
+                    <th>普通</th>
+                    <th>优良</th>
+                    <th>精致</th>
+                    <th>完美</th>
+                    <th>传奇</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img alt="" src="/resources/image/quality/Poor.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/quality/Average.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/quality/Good.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/quality/High.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/quality/Exceptional.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/quality/Legendary.webp" width="30px"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <fieldset class="layui-elem-field">
+                <legend>在不同的地方找到物品会影响他们品质：</legend>
+                <div class="layui-field-box">
+                    <ol>
+                        <li>放在外面可以直接看到的物品，通常是一般/过期。例：路边的棒球棒、木板。</li>
+                        <li>放在外面容器里的物品，通常是一般/过期或普通。例：桌子上的披萨</li>
+                        <li>放在容器里的物品，通常是普通。例：柜子、箱子、包。</li>
+                        <li>放在需要撬开或打破容器里的物品，通常是普通及以上，并且可能包含稀有物品。例：自动售货机。</li>
+                        <li>放在保险柜里的物品，通常是普通及以上，并且可能包含稀有物品。</li>
+                        <li>在密道的物品，通常是普通及以上。</li>
+                        <li>在密道资源箱的物品，永远不会是一般/过期，并且有50%几率比一般好，也包含稀有物品（甚至是这些箱子所独有物品）。</li>
+                    </ol>
+                </div>
+            </fieldset>
+        </div>
+        <div class="layui-col-md12">
+            <fieldset class="layui-elem-field">
+                <legend>物品品质影响：</legend>
+                <div class="layui-field-box">
+                    <ol>
+                        <li>攻击伤害。</li>
+                        <li>攻击速度。</li>
+                        <li>磨损速度。</li>
+                        <li>燃烧获得火力值。</li>
+                        <li>一般/过期不能分解。</li>
+                        <li>分解高品质的物品有几率获得更多资源。</li>
+                        <li>锻造时获得第二件武器的词条。</li>
+                        <li>食物的BUFF效果。</li>
+                    </ol>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        selectNav(4);
+        layui.element.render();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>武器</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+    <script src="/static/jQuery/jquery.min.js"></script>
+    <script src="/static/jQuery/jquery.cookie.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+    <script src="/static/js/base.js?v=3"></script>
+    <script src="/static/blowup/blowup.js"></script>
+</head>
+<body>
+<div id="nav-div">
+    <ul id="nav-view" class="layui-nav">
+        <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+        <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+        <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+        <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+        <li id="menu-4" class="layui-nav-item">
+            <a href="#">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/element/index.html">元素</a></dd>
+                <dd><a href="/html/quality/index.html">品质</a></dd>
+            </dl>
+        </li>
+        <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+    </ul>
+</div>
+<div id="main-div" class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+                    <span class="layui-breadcrumb" lay-separator="|">
+                        <a href="#tplview1">基本武器</a>
+                        <a href="#tplview2">枪支</a>
+                        <a href="#tplview3">杂项</a>
+                        <a href="#tplview4">图书</a>
+                        <a href="#tplview5">传奇</a>
+                    </span>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">基本武器</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>武器名</th>
+                    <th>伤害类型</th>
+                    <th>伤害</th>
+                    <th>攻速</th>
+                    <th>弹药/次数</th>
+                    <th>制作</th>
+                    <th>分解</th>
+                    <th>效果</th>
+                </tr>
+                </thead>
+                <tbody id="tplview1">
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">枪支</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>武器名</th>
+                    <th>伤害类型</th>
+                    <th>伤害</th>
+                    <th>攻速</th>
+                    <th>弹药/次数</th>
+                    <th>制作</th>
+                    <th>分解</th>
+                    <th>效果</th>
+                </tr>
+                </thead>
+                <tbody id="tplview2">
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">杂项远程武器</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>武器名</th>
+                    <th>伤害类型</th>
+                    <th>伤害</th>
+                    <th>攻速</th>
+                    <th>弹药/次数</th>
+                    <th>制作</th>
+                    <th>分解</th>
+                    <th>效果</th>
+                </tr>
+                </thead>
+                <tbody id="tplview3">
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">图书</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>武器名</th>
+                    <th>伤害类型</th>
+                    <th>伤害</th>
+                    <th>攻速</th>
+                    <th>弹药/次数</th>
+                    <th>制作</th>
+                    <th>分解</th>
+                    <th>效果</th>
+                </tr>
+                </thead>
+                <tbody id="tplview4">
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">传奇</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="150px">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>武器名</th>
+                    <th>伤害类型</th>
+                    <th>伤害</th>
+                    <th>攻速</th>
+                    <th>弹药/次数</th>
+                    <th>制作</th>
+                    <th>分解</th>
+                    <th>效果</th>
+                </tr>
+                </thead>
+                <tbody id="tplview5">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        selectNav(3);
+        layui.element.render();
+
+        $.post(host + "/item/selectByTypeAndType2", {type: 1, type2: 1}, function (data) {
+            for (let datum of data) {
+                if (datum.combo !== null) {
+                    datum.combo = datum.combo.replaceAll("\n", "<br>");
+                } else {
+                    datum.combo = "";
+                }
+            }
+            setTpl(data, tpl1, $("#tplview1"), function () {
+                layui.element.render();
+            });
+        });
+        $.post(host + "/item/selectByTypeAndType2", {type: 1, type2: 2}, function (data) {
+            for (let datum of data) {
+                if (datum.combo !== null) {
+                    datum.combo = datum.combo.replaceAll("\n", "<br>");
+                } else {
+                    datum.combo = "";
+                }
+            }
+            setTpl(data, tpl2, $("#tplview2"), function () {
+                layui.element.render();
+            });
+        });
+        $.post(host + "/item/selectByTypeAndType2", {type: 1, type2: 3}, function (data) {
+            for (let datum of data) {
+                if (datum.combo !== null) {
+                    datum.combo = datum.combo.replaceAll("\n", "<br>");
+                } else {
+                    datum.combo = "";
+                }
+            }
+            setTpl(data, tpl3, $("#tplview3"), function () {
+                layui.element.render();
+            });
+        });
+        $.post(host + "/item/selectByTypeAndType2", {type: 1, type2: 4}, function (data) {
+            for (let datum of data) {
+                if (datum.combo !== null) {
+                    datum.combo = datum.combo.replaceAll("\n", "<br>");
+                } else {
+                    datum.combo = "";
+                }
+            }
+            setTpl(data, tpl4, $("#tplview4"), function () {
+                layui.element.render();
+            });
+        });
+        $.post(host + "/item/selectByTypeAndType2", {type: 1, type2: 5}, function (data) {
+            for (let datum of data) {
+                if (datum.combo !== null) {
+                    datum.combo = datum.combo.replaceAll("\n", "<br>");
+                } else {
+                    datum.combo = "";
+                }
+            }
+            setTpl(data, tpl5, $("#tplview5"), function () {
+                layui.element.render();
+            });
+        });
+    });
+</script>
+<script id="tpl1" type="text/html">
+    {{# layui.each(d, function(index, item){ }}
+    <tr>
+        <td><img src="{{item.img}}" width="30px"></td>
+        <td><a target="_blank" href="/html/item/weapon/detail.html?id={{item.id}}">{{item.name}}</a></td>
+        <td>
+            {{# if(item.damageType === 0){ }}
+            <a target="_blank" href="/html/element/index.html"><img src="/resources/image/element/Physical.webp" width="30px"></a>
+            {{# }else if(item.damageType === 1){ }}
+            <a target="_blank" href="/html/element/index.html"><img src="/resources/image/element/Fire.webp" width="30px"></a>
+            {{# }else if(item.damageType === 2){ }}
+            <a target="_blank" href="/html/element/index.html"><img src="/resources/image/element/Cold.webp" width="30px"></a>
+            {{# }else if(item.damageType === 3){ }}
+            <a target="_blank" href="/html/element/index.html"><img src="/resources/image/element/Electric.webp" width="30px"></a>
+            {{# }else if(item.damageType === 4){ }}
+            <a target="_blank" href="/html/element/index.html"><img src="/resources/image/element/Toxic.webp" width="30px"></a>
+            {{# }else if(item.damageType === 8){ }}
+            <a target="_blank" href="/html/element/index.html"><img src="/resources/image/element/Piercing.webp" width="30px"></a>
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.damage === null){ }}
+
+            {{# }else{ }}
+            {{item.damage}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.speed === null){ }}
+
+            {{# }else{ }}
+            {{item.speed}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.ammo === null){ }}
+
+            {{# }else{ }}
+            {{item.ammo}}
+            {{# }; }}
+        </td>
+        {{# if(item.itemRecipeList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        {{# if(item.itemSalvageList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        <td>{{item.combo}}</td>
+    </tr>
+    {{# }); }}
+</script>
+<script id="tpl2" type="text/html">
+    {{# layui.each(d, function(index, item){ }}
+    <tr>
+        <td><img src="{{item.img}}" width="30px"></td>
+        <td><a target="_blank" href="/html/item/weapon/detail.html?id={{item.id}}">{{item.name}}</a></td>
+        <td>
+            {{# if(item.damageType === 0){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Physical.webp" width="30px"></a>
+            {{# }else if(item.damageType === 1){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Fire.webp" width="30px"></a>
+            {{# }else if(item.damageType === 2){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Cold.webp" width="30px"></a>
+            {{# }else if(item.damageType === 3){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Electric.webp" width="30px"></a>
+            {{# }else if(item.damageType === 4){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Toxic.webp" width="30px"></a>
+            {{# }else if(item.damageType === 8){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Piercing.webp" width="30px"></a>
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.damage === null){ }}
+
+            {{# }else{ }}
+            {{item.damage}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.speed === null){ }}
+
+            {{# }else{ }}
+            {{item.speed}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.ammo === null){ }}
+
+            {{# }else{ }}
+            {{item.ammo}}
+            {{# }; }}
+        </td>
+        {{# if(item.itemRecipeList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        {{# if(item.itemSalvageList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        <td>{{item.combo}}</td>
+    </tr>
+    {{# }); }}
+</script>
+<script id="tpl3" type="text/html">
+    {{# layui.each(d, function(index, item){ }}
+    <tr>
+        <td><img src="{{item.img}}" width="30px"></td>
+        <td><a target="_blank" href="/html/item/weapon/detail.html?id={{item.id}}">{{item.name}}</a></td>
+        <td>
+            {{# if(item.damageType === 0){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Physical.webp" width="30px"></a>
+            {{# }else if(item.damageType === 1){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Fire.webp" width="30px"></a>
+            {{# }else if(item.damageType === 2){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Cold.webp" width="30px"></a>
+            {{# }else if(item.damageType === 3){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Electric.webp" width="30px"></a>
+            {{# }else if(item.damageType === 4){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Toxic.webp" width="30px"></a>
+            {{# }else if(item.damageType === 8){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Piercing.webp" width="30px"></a>
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.damage === null){ }}
+
+            {{# }else{ }}
+            {{item.damage}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.speed === null){ }}
+
+            {{# }else{ }}
+            {{item.speed}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.ammo === null){ }}
+
+            {{# }else{ }}
+            {{item.ammo}}
+            {{# }; }}
+        </td>
+        {{# if(item.itemRecipeList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        {{# if(item.itemSalvageList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        <td>{{item.combo}}</td>
+    </tr>
+    {{# }); }}
+</script>
+<script id="tpl4" type="text/html">
+    {{# layui.each(d, function(index, item){ }}
+    <tr>
+        <td><img src="{{item.img}}" width="30px"></td>
+        <td><a target="_blank" href="/html/item/weapon/detail.html?id={{item.id}}">{{item.name}}</a></td>
+        <td>
+            {{# if(item.damageType === 0){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Physical.webp" width="30px"></a>
+            {{# }else if(item.damageType === 1){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Fire.webp" width="30px"></a>
+            {{# }else if(item.damageType === 2){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Cold.webp" width="30px"></a>
+            {{# }else if(item.damageType === 3){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Electric.webp" width="30px"></a>
+            {{# }else if(item.damageType === 4){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Toxic.webp" width="30px"></a>
+            {{# }else if(item.damageType === 8){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Piercing.webp" width="30px"></a>
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.damage === null){ }}
+
+            {{# }else{ }}
+            {{item.damage}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.speed === null){ }}
+
+            {{# }else{ }}
+            {{item.speed}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.ammo === null){ }}
+
+            {{# }else{ }}
+            {{item.ammo}}
+            {{# }; }}
+        </td>
+        {{# if(item.itemRecipeList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        {{# if(item.itemSalvageList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        <td>{{item.combo}}</td>
+    </tr>
+    {{# }); }}
+</script>
+<script id="tpl5" type="text/html">
+    {{# layui.each(d, function(index, item){ }}
+    <tr>
+        <td><img src="{{item.img}}" width="30px"></td>
+        <td><a target="_blank" href="/html/item/weapon/detail.html?id={{item.id}}">{{item.name}}</a></td>
+        <td>
+            {{# if(item.damageType === 0){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Physical.webp" width="30px"></a>
+            {{# }else if(item.damageType === 1){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Fire.webp" width="30px"></a>
+            {{# }else if(item.damageType === 2){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Cold.webp" width="30px"></a>
+            {{# }else if(item.damageType === 3){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Electric.webp" width="30px"></a>
+            {{# }else if(item.damageType === 4){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Toxic.webp" width="30px"></a>
+            {{# }else if(item.damageType === 8){ }}
+            <a href="/html/element/index.html"><img src="/resources/image/element/Piercing.webp" width="30px"></a>
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.damage === null){ }}
+
+            {{# }else{ }}
+            {{item.damage}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.speed === null){ }}
+
+            {{# }else{ }}
+            {{item.speed}}
+            {{# }; }}
+        </td>
+        <td>
+            {{# if(item.ammo === null){ }}
+
+            {{# }else{ }}
+            {{item.ammo}}
+            {{# }; }}
+        </td>
+        {{# if(item.itemRecipeList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        {{# if(item.itemSalvageList.length !== 0){ }}
+        <td style="font-weight: bold;font-size:1.5em;color: green;">
+            √
+        </td>
+        {{# }else{ }}
+        <td style="font-weight: bold;font-size:1.5em;color: red;">
+            ×
+        </td>
+        {{# }; }}
+        <td>{{item.combo}}</td>
+    </tr>
+    {{# }); }}
+</script>
+</body>
+</html>

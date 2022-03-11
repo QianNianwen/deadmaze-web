@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>元素</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+    <script src="/static/jQuery/jquery.min.js"></script>
+    <script src="/static/jQuery/jquery.cookie.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+    <script src="/static/js/base.js?v=3"></script>
+</head>
+<body>
+<div id="nav-div">
+    <ul id="nav-view" class="layui-nav">
+        <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+        <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+        <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+        <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+        <li id="menu-4" class="layui-nav-item">
+            <a href="#">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/element/index.html">元素</a></dd>
+                <dd><a href="/html/quality/index.html">品质</a></dd>
+            </dl>
+        </li>
+        <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+    </ul>
+</div>
+<div id="main-div" class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">伤害类型</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>物理</th>
+                    <th>穿刺</th>
+                    <th>火焰</th>
+                    <th>冰冻</th>
+                    <th>电击</th>
+                    <th>毒素</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img alt="" src="/resources/image/element/Physical.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/element/Piercing.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/element/Fire.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/element/Cold.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/element/Electric.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/element/Toxic.webp" width="30px"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">元素BUFF-元素类型伤害可附加对应元素BUFF，从对应地面走过也会附加对应元素BUFF</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>燃烧</th>
+                    <th>中毒</th>
+                    <th>寒冷</th>
+                    <th>带电</th>
+                    <th>潮湿</th>
+                    <th>易燃</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Burning.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Toxic.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Chilled.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Electrified.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Flammable.webp" width="30px"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">组合-BUFF直接互相组合会产生新的效果，与顺序无关。</blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col width="200">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>元素1</th>
+                    <th>元素2</th>
+                    <th>结果</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Chilled.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px">移除。新增<img alt="" src="/resources/image/buff/Frozen.webp" width="30px">5秒-不能攻击和移动，受到的非致命伤害增加25%。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Electrified.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Electrified.webp" width="30px">和<img alt="" src="/resources/image/buff/Wet.webp" width="30px">移除。新增<img alt="" src="/resources/image/buff/Stun.webp" width="30px">4秒-不能攻击和移动。电可以在感染者间传递，所以可以同时眩晕多个潮湿的敌人。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Flammable.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Flammable.webp" width="30px">和<img alt="" src="/resources/image/buff/Wet.webp" width="30px">移除。新增<img alt="" src="/resources/image/buff/Toxic.webp" width="30px">。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Burning.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Toxic.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Toxic.webp" width="30px">移除。范围爆炸伤害为<img alt="" src="/resources/image/buff/Toxic.webp" width="30px">与<img alt="" src="/resources/image/buff/Burning.webp" width="30px">两者最高值。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Burning.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Flammable.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Flammable.webp" width="30px">移除。<img alt="" src="/resources/image/buff/Burning.webp" width="30px">的伤害变高。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Electrified.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Flammable.webp" width="30px"></td>
+                    <td>传递<img alt="" src="/resources/image/buff/Flammable.webp" width="30px">。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Burning.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Chilled.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Frozen.webp" width="30px">和<img alt="" src="/resources/image/buff/Chilled.webp" width="30px">移除。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Toxic.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Toxic.webp" width="30px">和<img alt="" src="/resources/image/buff/Wet.webp" width="30px">移除。</td>
+                </tr>
+                <tr>
+                    <td><img alt="" src="/resources/image/buff/Burning.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Wet.webp" width="30px"></td>
+                    <td><img alt="" src="/resources/image/buff/Burning.webp" width="30px">和<img alt="" src="/resources/image/buff/Wet.webp" width="30px">移除。</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        selectNav(4);
+        layui.element.render();
+    });
+</script>
+</body>
+</html>

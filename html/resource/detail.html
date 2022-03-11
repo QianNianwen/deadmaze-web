@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>资源</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+    <script src="/static/jQuery/jquery.min.js"></script>
+    <script src="/static/jQuery/jquery.cookie.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+    <script src="/static/js/base.js?v=3"></script>
+    <script src="/static/blowup/blowup.js"></script>
+</head>
+<body>
+<div id="nav-div">
+    <ul id="nav-view" class="layui-nav">
+        <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+        <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+        <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+        <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+        <li id="menu-4" class="layui-nav-item">
+            <a href="#">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/element/index.html">元素</a></dd>
+                <dd><a href="/html/quality/index.html">品质</a></dd>
+            </dl>
+        </li>
+        <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+    </ul>
+</div>
+<div id="main-div" class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote"><img id="img" src="" width="30px"><span id="name"></span>&nbsp;&nbsp;&nbsp;最大堆叠<span id="maxStack"></span></blockquote>
+        </div>
+        <div id="desc" class="layui-col-md12">
+            <fieldset class="layui-elem-field">
+                <legend>介绍</legend>
+                <div class="layui-field-box">
+                    待完善
+                </div>
+            </fieldset>
+        </div>
+        <div class="layui-col-md12">
+            <blockquote class="layui-elem-quote">来源</blockquote>
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                <p id="source"></p>
+            </blockquote>
+            <table class="layui-table" lay-even>
+                <colgroup>
+                    <col>
+                </colgroup>
+                <tbody id="tplview1">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        selectNav(6);
+        layui.element.render();
+
+        $.post(host + "/resource/selectById", {id: getUrlParam("id")}, function (data) {
+            $(document).attr("title",data.name);
+            $("#name").text(data.name + "（" + data.nameE + "）");
+            $("#img").attr("src", data.img);
+            $("#desc div").text(data.desc);
+            $("#maxStack").text(data.maxStack);
+            $("#source").text(data.source);
+        });
+        $.post(host + "/item/selectByResourceId", {resourceId: getUrlParam("id")}, function (data) {
+            let array = [];
+            for (let item of data) {
+                let map = new Map();
+                map.set("id",item.itemId);
+                let index = queryArray(array,map,function (item1, item2) {
+                    return item1.get("id") === item2.get("id");
+                });
+                if(index !== -1){
+                    array[index].get("array").push(item);
+                }else {
+                    let array2=[];
+                    array2.push(item);
+                    map.set("array",array2);
+                    array.push(map);
+                }
+            }
+
+            setTpl(array, tpl1, $("#tplview1"), function () {
+                layui.element.render();
+            });
+        });
+    });
+</script>
+<script id="tpl1" type="text/html">
+    {{# layui.each(d, function(index, item){ }}
+    <tr>
+        <td><img src="{{item.get('array')[0].item.img}}" width="30px"></td>
+        <td>
+            {{# if(item.get('array')[0].item.type === 1){ }}
+            <a target="_blank" href="/html/item/weapon/detail.html?id={{item.get('array')[0].item.id}}">{{item.get('array')[0].item.name}}</a>
+            {{# }else if(item.get('array')[0].item.type === 2){ }}
+            <a target="_blank" href="/html/item/food/detail.html?id={{item.get('array')[0].item.id}}">{{item.get('array')[0].item.name}}</a>
+            {{# }else if(item.get('array')[0].item.type === 3){ }}
+            <a target="_blank" href="/html/item/miscellaneou/detail.html?id={{item.get('array')[0].item.id}}">{{item.get('array')[0].item.name}}</a>
+            {{# }else if(item.get('array')[0].item.type === 4){ }}
+            <a target="_blank" href="/html/item/quest/detail.html?id={{item.get('array')[0].item.id}}">{{item.get('array')[0].item.name}}</a>
+            {{# } }}
+        </td>
+        {{# layui.each(item.get('array'), function(index2, item2){ }}
+        <td>
+            <span style="color: red;font-style: italic;">{{item2.probability}}</span>&nbsp;&nbsp;<span style="color: green;font-weight: bold;">{{item2.count}}</span><img src="{{item2.resource.img}}" width="30px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        {{# }); }}
+    </tr>
+    {{# }); }}
+</script>
+</body>
+</html>

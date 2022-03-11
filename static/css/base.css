@@ -1,0 +1,35 @@
+.layui-table img {
+    max-width: none;
+}
+
+blockquote {
+    margin: 5px 0;
+}
+
+blockquote p {
+    text-indent: 2em;
+}
+ol li{
+    list-style: decimal;
+}
+
+.poor{
+    color: #a64b60;
+    font-weight: bold;
+}
+.average{
+    color: inherit;
+    font-weight: bold;
+}
+.good{
+    color: #58c43c;
+    font-weight: bold;
+}
+.high{
+    color: #576fdb;
+    font-weight: bold;
+}
+.exceptional{
+    color: #ad38d2;
+    font-weight: bold;
+}

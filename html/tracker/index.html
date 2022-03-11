@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>追踪器</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+    <script src="/static/jQuery/jquery.min.js"></script>
+    <script src="/static/jQuery/jquery.cookie.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+    <script src="/static/js/base.js?v=3"></script>
+</head>
+<body>
+<div id="nav-div">
+    <ul id="nav-view" class="layui-nav">
+        <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+        <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+        <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+        <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+        <li id="menu-4" class="layui-nav-item">
+            <a href="#">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/element/index.html">元素</a></dd>
+                <dd><a href="/html/quality/index.html">品质</a></dd>
+            </dl>
+        </li>
+        <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+    </ul>
+</div>
+<div id="main-div" class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">密道（SP）追踪器</li>
+                    <!--                            <li>支线任务追踪器</li>-->
+                    <li>狗任务追踪器</li>
+                    <li>资源追踪器</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <blockquote class="layui-elem-quote">密道（SP）&nbsp;&nbsp;&nbsp;同步时间:<span id="trackerSPListDate" style="color: green"></span>&nbsp;&nbsp;&nbsp;密道刷新时间:<span id="SPResetTime" style="color: red"></span>&nbsp;&nbsp;&nbsp;<button id="SPRefreshBtn" type="button" class="layui-btn">刷新</button>
+                            <button id="SPResetFlagBtn" type="button" class="layui-btn">重置标记</button>
+                        </blockquote>
+                        <blockquote class="layui-elem-quote layui-quote-nm">
+                            <p>密道是每个地图中无法进入的特殊区域，但是每个小时其中一个密道将被打开持续一个小时，相同的密道永远不会连续两次打开。密道内部有一个补给箱，需要在密道内杀死100名感染者，才能打开。</p>
+                            <p>此追踪器同步国外追踪器网站（https://projects.fewfre.com/a801/deadmaze/tracker）数据，每1分钟同步一次。</p>
+                            <p>由于结果是玩家投票选出，故存在错误和延迟。绿色背景为投票选出的已经打开的密道。灰色背景为投票选出的未打开的密道。点击前方地图名可以打开地图。点击密道可以进行标记，以红色边框表示，每天13点（UTC时间5点）自动清除。</p>
+                        </blockquote>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>地图</th>
+                                <th>密道1</th>
+                                <th>密道2</th>
+                                <th>密道3</th>
+                                <th>密道4</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tplview1">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--                            <div class="layui-tab-item">待完善</div>-->
+                    <div class="layui-tab-item">
+                        <blockquote class="layui-elem-quote">狗任务&nbsp;&nbsp;&nbsp;同步时间:<span id="trackerDogListDate" style="color: green"></span>&nbsp;&nbsp;&nbsp;狗任务刷新时间:<span id="DogResetTime" style="color: red"></span>&nbsp;&nbsp;&nbsp;<button id="DogRefreshBtn" type="button" class="layui-btn">刷新</button>
+                        </blockquote>
+                        <blockquote class="layui-elem-quote layui-quote-nm">
+                            <p>每天11点（UTC时间3点）刷新。</p>
+                            <p>此追踪器同步国外追踪器网站（https://projects.fewfre.com/a801/deadmaze/tracker）数据，每10分钟同步一次。</p>
+                            <p>由于结果是玩家投票选出，故存在错误和延迟。绿色背景为投票选出的今日狗任务。灰色背景为投票选出的非今日狗任务。</p>
+                        </blockquote>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <tbody id="tplview3">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="layui-tab-item">
+                        <blockquote class="layui-elem-quote">资源&nbsp;&nbsp;&nbsp;同步时间:<span id="trackerResourceListDate" style="color: green"></span>&nbsp;&nbsp;&nbsp;资源刷新时间:<span id="ResourceResetTime" style="color: red"></span>&nbsp;&nbsp;&nbsp;<button id="ResourceRefreshBtn" type="button" class="layui-btn">刷新</button>
+                        </blockquote>
+                        <blockquote class="layui-elem-quote layui-quote-nm">
+                            <p>NPC[Antonio]每天回收一种资源，可以换取<img src="/resources/image/currency/Reputation.webp" width="30px">R币。每天12点（UTC时间4点）刷新。</p>
+                            <p>此追踪器同步国外追踪器网站（https://projects.fewfre.com/a801/deadmaze/tracker）数据，每30分钟同步一次。</p>
+                            <p>由于结果是玩家投票选出，故存在错误和延迟。绿色背景为投票选出的今日回收资源。灰色背景为投票选出的非今日回收资源。</p>
+                        </blockquote>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <tbody id="tplview2">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        selectNav(5);
+        layui.element.render();
+        let now = new Date();
+        countdown(new Date(now.setHours(now.getHours() + 1, 0, 0, 0)), $("#SPResetTime"), 1);
+        now = new Date();
+        if (now.getHours() >= 12) {
+            let temp = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+            countdown(new Date(temp.setHours(12, 0, 0, 0)), $("#ResourceResetTime"), 24);
+        } else {
+            countdown(new Date(now.setHours(12, 0, 0, 0)), $("#ResourceResetTime"), 24);
+        }
+        now = new Date();
+        if (now.getHours() >= 11) {
+            let temp = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+            countdown(new Date(temp.setHours(11, 0, 0, 0)), $("#DogResetTime"), 24);
+        } else {
+            countdown(new Date(now.setHours(11, 0, 0, 0)), $("#DogResetTime"), 24);
+        }
+        $("#SPRefreshBtn").click(function () {
+            SPRefresh("密道（SP）追踪器刷新成功")
+        });
+        $("#ResourceRefreshBtn").click(function () {
+            ResourceRefresh("资源追踪器刷新成功")
+        });
+        $("#DogRefreshBtn").click(function () {
+            DogRefresh("狗任务追踪器刷新成功")
+        });
+        $("#SPResetFlagBtn").click(SPResetFlag);
+
+        SPRefresh();
+        ResourceRefresh();
+        DogRefresh();
+        SPResetFlag();
+    });
+
+    function SPRefresh(msg) {
+        $.post(host + "/tracker/sp", {}, function (data) {
+            $("#trackerSPListDate").text(data.trackerSPListDate);
+            setTpl(data, tpl1, $("#tplview1"), function () {
+                layui.element.render();
+                let lastSpTime = $.cookie("last-sp-time");
+                if (lastSpTime !== undefined) {
+                    let lastDate = new Date(parseInt(lastSpTime));
+                    let now = new Date();
+                    let resetDate = new Date(new Date().setHours(13));
+                    if (lastDate < resetDate && now > resetDate) {
+                        SPResetFlag();
+                    }
+                }
+
+                for (let i = 1; i <= 29; i++) {
+                    let td = $("#sp-id-" + i);
+                    let id = $.cookie(td.attr("id"));
+                    if (id === "true") {
+                        td.css("border", "2px solid red");
+                    }
+                }
+                $.cookie("last-sp-time", new Date().getTime(), {expires: 7});
+            });
+        });
+        if (msg !== undefined) {
+            layui.layer.msg(msg);
+        }
+    }
+
+    function ResourceRefresh(msg) {
+        $.post(host + "/tracker/resource", {}, function (data) {
+            $("#trackerResourceListDate").text(data.trackerResourceListDate);
+            setTpl(data, tpl2, $("#tplview2"), function () {
+                layui.element.render();
+            });
+        });
+        if (msg !== undefined) {
+            layui.layer.msg(msg);
+        }
+    }
+
+    function DogRefresh(msg) {
+        $.post(host + "/tracker/dog", {}, function (data) {
+            $("#trackerDogListDate").text(data.trackerDogListDate);
+            setTpl(data, tpl3, $("#tplview3"), function () {
+                layui.element.render();
+            });
+        });
+        if (msg !== undefined) {
+            layui.layer.msg(msg);
+        }
+    }
+
+    function SPResetFlag() {
+        for (let i = 1; i <= 29; i++) {
+            let td = $("#sp-id-" + i);
+            $.cookie(td.attr("id"), null);
+        }
+        for (let i = 1; i <= 29; i++) {
+            let td = $("#sp-id-" + i);
+            let id = $.cookie(td.attr("id"));
+            if (id === "true") {
+                td.css("border", "2px solid red");
+            } else {
+                td.css("border", "");
+            }
+        }
+    }
+
+    function sp(td) {
+        td = $(td);
+        let id = $.cookie(td.attr("id"));
+        if (id === "true") {
+            $.cookie(td.attr("id"), false, {expires: 7});
+            td.css("border", "");
+        } else if (id === "false") {
+            $.cookie(td.attr("id"), true, {expires: 7});
+            td.css("border", "2px solid red");
+        } else {
+            $.cookie(td.attr("id"), true, {expires: 7});
+            td.css("border", "2px solid red");
+        }
+    }
+
+    function countdown(date, view, hours) {
+        setInterval(function () {
+            let now = new Date();
+            let time = date.getTime() - now.getTime();
+            time = Math.floor(time / 1000);
+            view.text(patchZero(Math.floor(time / 60 / 60)) + ":" + patchZero(Math.floor(time / 60 % 60)) + ":" + patchZero(Math.floor(time % 60)));
+            if (time < 0) {
+                date = new Date(date.setHours(date.getHours() + hours));
+            }
+        }, 1000);
+    }
+</script>
+<script id="tpl1" type="text/html">
+    {{#  layui.each(d.trackerSPList, function(index, item){ }}
+    <tr>
+        <td style="background-color: #40AFFE;"><a target="_blank" href="/html/zone/detail.html?id={{item.zone.id}}">{{item.zone.name}}（{{item.zone.nameE}}）</a></td>
+        {{# layui.each(item.trackerNodeList, function(index2, item2){ }}
+        <td id="sp-id-{{item2.id}}" onclick="sp(this);" {{# if(item2.yes> item2.no){ }} style="background-color: #00FF00" {{# } }}{{# if(item2.yes < item2.no){ }} style="background-color: gray" {{# } }} >
+            <p>{{item2.name}}</p>
+            <p>{{item2.yes}}票开启 {{item2.no}}票关闭</p>
+        </td>
+        {{# }); }}
+    </tr>
+    {{#  }); }}
+</script>
+<script id="tpl2" type="text/html">
+    <tr>
+        {{# layui.each(d.trackerResourceList, function(index, item){ }}
+        {{# if(index != 0 && index%5 == 0){ }}
+    </tr>
+    <tr>
+        {{# } }}
+        <td {{# if(item.yes> item.no){ }} style="background-color: #00FF00" {{# } }}{{# if(item.yes < item.no){ }} style="background-color: gray" {{# } }}>
+            <p><a href="/html/resource/detail.html?id={{item.resource.id}}"><img src="{{item.resource.img}}" width="30px">{{item.resource.name}}</a></p>
+            <p>{{item.yes}}票开启 {{item.no}}票关闭</p>
+        </td>
+        {{# }); }}
+    </tr>
+</script>
+<script id="tpl3" type="text/html">
+    {{#  layui.each(d.trackerDogList, function(index, item){ }}
+    <tr>
+        <td style="background-color: #40AFFE;">{{item.name}}</td>
+        <td>
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <tbody>
+                <tr>
+                    {{# layui.each(item.trackerNodeList, function(index2, item2){ }}
+                    {{# if(index2 != 0 && index2%4 == 0){ }}
+                </tr>
+                <tr>
+                    {{# } }}
+                    <td {{# if(item2.yes> item2.no){ }} style="background-color: #00FF00" {{# } }}{{# if(item2.yes < item2.no){ }} style="background-color: gray" {{# } }} >
+                        <p>{{item2.taskDog.name}}<a target="_blank" href="{{item2.taskDog.img}}" style="color: blue">地图</a></p>
+                        <p>{{item2.yes}}票开启 {{item2.no}}票关闭</p>
+                    </td>
+                    {{# }); }}
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    {{#  }); }}
+</script>
+</body>
+</html>

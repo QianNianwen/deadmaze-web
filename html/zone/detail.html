@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>地图</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="icon" href="/resources/image/favicon.ico" type="image/x-icon"/>
+    <script src="/static/jQuery/jquery.min.js"></script>
+    <script src="/static/jQuery/jquery.cookie.js"></script>
+    <script src="/static/layui/layui.all.js"></script>
+    <script src="/static/js/base.js?v=3"></script>
+    <script src="/static/blowup/blowup.js"></script>
+</head>
+<body>
+<div id="nav-div">
+    <ul id="nav-view" class="layui-nav">
+        <li id="menu-1" class="layui-nav-item"><a href="/index.html">首页</a></li>
+        <li id="menu-2" class="layui-nav-item"><a href="/html/zone/index.html">地图</a></li>
+        <li id="menu-6" class="layui-nav-item"><a href="/html/resource/index.html">资源</a></li>
+        <li id="menu-3" class="layui-nav-item">
+            <a href="#">物品</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/item/weapon/index.html">武器</a></dd>
+                <dd><a href="/html/item/food/index.html">食物和饮料</a></dd>
+                <dd><a href="/html/item/miscellaneou/index.html">杂项</a></dd>
+                <dd><a href="/html/item/quest/index.html">任务物品</a></dd>
+            </dl>
+        </li>
+        <li id="menu-4" class="layui-nav-item">
+            <a href="#">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/element/index.html">元素</a></dd>
+                <dd><a href="/html/quality/index.html">品质</a></dd>
+            </dl>
+        </li>
+        <li id="menu-5" class="layui-nav-item"><a href="/html/tracker/index.html">追踪器</a></li>
+    </ul>
+</div>
+<div id="main-div" class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+                    <span class="layui-breadcrumb" lay-separator="|">
+                        <a href="#name">介绍</a>
+                        <a href="#map">地图</a>
+                    </span>
+        </div>
+        <div id="name" class="layui-col-md12">
+            <blockquote class="layui-elem-quote"></blockquote>
+        </div>
+        <div id="desc" class="layui-col-md12">
+            <fieldset class="layui-elem-field">
+                <legend>介绍</legend>
+                <div class="layui-field-box">
+                </div>
+            </fieldset>
+        </div>
+        <div id="map" class="layui-col-md12">
+            <blockquote class="layui-elem-quote">地图</blockquote>
+        </div>
+        <div class="layui-col-md10 layui-col-lg-offset1">
+            <div>
+                <img class="map" alt="" width="100%">
+            </div>
+        </div>
+        <div class="layui-col-md10 layui-col-lg-offset1">
+            <div id="tplview1" class="layui-btn-group" style="margin: 5px 0">
+            </div>
+        </div>
+        <div class="layui-col-md12" style="height: 200px"></div>
+    </div>
+</div>
+<script>
+    $(function () {
+        selectNav(2);
+        layui.element.render();
+        $.post(host + "/zone/selectById", {id: getUrlParam("id")}, function (data) {
+            $(document).attr("title",data.name);
+            $("#name blockquote").text(data.name + "（" + data.nameE + "）");
+            $("#desc div").text(data.desc);
+            let map = $(".map");
+            map.attr("src", data.imgEmpty);
+            setTpl(data, tpl1, $("#tplview1"), function () {
+                map.blowup({
+                    round: false,
+                    width: 600,
+                    height: 400
+                });
+                map.click(function () {
+                    window.open($(this).attr("src"));
+                });
+            });
+            layui.layer.msg("服务器宽度较差，第一次加载速度较慢，请耐心等待。");
+        });
+    });
+
+    function selectMap(button) {
+        let map = $(".map");
+        map.attr("src", $(button).attr("data-url"));
+        map.unbind();
+        map.blowup({
+            round: false,
+            width: 600,
+            height: 400
+        });
+        layui.layer.msg("服务器宽度较差，第一次加载速度较慢，请耐心等待。");
+    }
+
+</script>
+<script id="tpl1" type="text/html">
+    {{#  if(d.imgEmpty !== null){ }}
+    <button type="button" class="layui-btn" data-url="{{d.imgEmpty}}" onclick="selectMap(this)">默认</button>
+    {{#  } }}
+    {{#  if(d.imgSp !== null){ }}
+    <button type="button" class="layui-btn layui-btn-normal" data-url="{{d.imgSp}}" onclick="selectMap(this)">SP</button>
+    {{#  } }}
+    {{#  if(d.imgSupplement !== null){ }}
+    <button type="button" class="layui-btn layui-btn-warm" data-url="{{d.imgSupplement}}" onclick="selectMap(this)">补充</button>
+    {{#  } }}
+    {{#  if(d.imgItem !== null){ }}
+    <button type="button" class="layui-btn layui-btn--danger" data-url="{{d.imgItem}}" onclick="selectMap(this)">物品分区</button>
+    {{#  } }}
+</script>
+</body>
+</html>
