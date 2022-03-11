@@ -1,4 +1,4 @@
-const host="http://101.132.146.173:10001"
+const host="http://101.133.237.19:10001"
 
 function selectNav(n) {
     $("#menu-"+n).addClass("layui-this");
